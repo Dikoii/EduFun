@@ -24,14 +24,14 @@ class CourseSeeder extends Seeder
             'Network Administration',
             'Popular Network Technology',
         ];
-
+        
         for($i = 0; $i<6; $i++){
             Course::create([
                 'category_id' => $i < 3 ? 1 : 2,
-                'writer_id' => rand(1,3),
+                'writer_id' => $i < 3 ? 2 : 3,
                 'name' => $name[$i],
-                'description' => $faker->text(1000),
-                'image' => '1',
+                'description' => $faker->paragraph(10)."\n\n".$faker->paragraph(10),
+                'image' => $name[$i].'.jpg',
             ]);
         }
 

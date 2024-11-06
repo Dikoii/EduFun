@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Writer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class WriterSeeder extends Seeder
 {
@@ -13,16 +15,20 @@ class WriterSeeder extends Seeder
      */
     public function run(): void
     {
-        $name = [
-            'Raka Putra Wicaksono',
-            'Bia Mecca Annisa',
-            'Abi Firmansyah'
-        ];
+        $faker = Faker::create('id_ID');
 
-        foreach ($name as $nama){
+        for ($i = 1; $i <= 2; $i++) {
             Writer::create([
-                'name'  => $nama
+                'category_id' => 1,
+                'name' => $faker->name(),
+                'image' => 'Asset/writer/writer-'. $i .'.jpg',
             ]);
         }
+        
+        Writer::create([
+            'category_id' => 2,
+            'name' => $faker->name(),
+            'image' => 'Asset/writer/writer-3.jpg',
+        ]);
     }
 }

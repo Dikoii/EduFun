@@ -28,7 +28,7 @@
                   <a class="nav-link active {{ Request::is('aboutUs') ? 'text-decoration-underline text-primary' : ''}}" aria-current="page" href="{{ route('aboutUs') }}">About Us</a>
               </li>
               <li class="nav-item pe-4">
-                  <a class="nav-link active link-offset-3 {{ Request::is('popular') ? 'text-decoration-underline text-primary' : ''}}" aria-current="page" href="#">Popular</a>
+                  <a class="nav-link active link-offset-3 {{ Request::is('popular') ? 'text-decoration-underline text-primary' : ''}}" aria-current="page" href="{{route('popularPage')}}">Popular</a>
               </li>
           </ul>
       </div>

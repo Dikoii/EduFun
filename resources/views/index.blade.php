@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HomePage</title>
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}">
-    <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <style>
-    </style>
-</head>
-<body class="bg-secondary bg-opacity-10">
-        @include('layout.navbar')
+@extends('layout.main')
+@section('content')
         <div class="">
             <img src="{{ asset('Asset/homeBG.jpg') }}" class="w-100 img-fluid" style="height: 50vh; object-fit:cover;" alt="">
-            <div class="d-flex flex-row gap-5 w-75 mx-auto m-5">
-                <img src="{{ asset('Asset/homeBG.jpg') }}" style="width:20rem; height:10rem;" class="rounded-4" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+            @foreach ($courses as $course)
+            <div class="d-flex gap-4 mt-4 mb-4 ms-4 me-4">
+                <img src="{{ asset('Asset/course/'.$course->image) }}" alt="{{ $course->title }}" class="rounded-5"
+                    style="width: 300px; height: auto;">
+                <div class="flex-grow-1">
+                    <h2>{{ $course->name }}</h2>
+                    <p>{{ $course->created_at->format('Y-m-d') }} | by: {{ $course->writer->name }}</p>
+                    <p>{{ Str::limit($course->description, 100, '...') }}</p>
+                    <div class="text-end">
+                        <a href={{ route('courseDetailPage', $course->id) }} class="btn btn-primary">Read More...</a>
+                    </div>
                 </div>
             </div>
+        @endforeach
         </div>
-        @include('layout.footer')
-</body>
-</html>
+@endsection

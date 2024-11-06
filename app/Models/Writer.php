@@ -15,4 +15,9 @@ class Writer extends Model
     {
         return $this->hasMany(Course::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -14,3 +14,7 @@ Route::get('/aboutUs', [NavigationController::class, 'aboutUsPage'])->name('abou
 Route::get('/courseDetail/{course_id}', [NavigationController::class, 'courseDetailPage'])->name('courseDetailPage');
 
 Route::get('/writers', [NavigationController::class, 'writersPage'])->name('writers');
+
+Route::get('/writerDetail/{writer_id}', [NavigationController::class, 'writerDetailPage'])->name('writerDetailPage');
+
+Route::get('/popular', [NavigationController::class, 'popularPage'])->name('popularPage');

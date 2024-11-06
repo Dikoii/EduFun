@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Writer;
 use Illuminate\Http\Request;
 
 class NavigationController extends Controller
@@ -11,8 +12,8 @@ class NavigationController extends Controller
     public function homePage(){
 
         $categories = Category::all();
-        
-        return view('index', compact('categories'));
+        $courses = Course::all();
+        return view('index', compact('categories', 'courses'));
     }
 
     public function categoryPage($category_name){
@@ -39,10 +40,6 @@ class NavigationController extends Controller
         $categories = Category::all();
         $course = Course::with(['writer', 'category'])->find($course_id);
 
-        if (!$course) {
-            return redirect()->route('categoryPage', ['category_name' => $course->category->name])->with('error', 'Course not found.');
-        }
-
         return view('courseDetail', [
             'categories' => $categories,
             'course' => $course,
@@ -52,7 +49,22 @@ class NavigationController extends Controller
 
     public function writersPage(){
         $categories = Category::all();
-        
-        return view('writers', compact('categories'));
+        $writers = Writer::all();
+        return view('writers', compact('categories', 'writers'));
     }
+
+    public function writerDetailPage($writers_id){
+        $categories = Category::all();
+        $courses = Course::with('writer')->where('writer_id', 'LIKE', $writers_id)->get();
+        $writer = Writer::findOrFail($writers_id);
+        return view('writerDetail', compact('categories', 'courses', 'writer'));
+    }
+
+    public function popularPage(){
+        $courses = Course::with('writer')->paginate(3);
+        $categories = Category::all();
+
+        return view('popular', compact('categories', 'courses'));
+    }
+
 }
