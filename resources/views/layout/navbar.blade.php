@@ -9,10 +9,10 @@
       <div class="collapse navbar-collapse gap-3 w-50 fs-5" id="navbarText">
           <ul class="navbar-nav">
               <li class="nav-item pe-4">
-                  <a class="nav-link active {{ Request::is('/') || Request::is('home') || request()->routeIs('homePage') || request()->routeIs('homes') ? 'text-decoration-underline text-primary' : ''}}" aria-current="page" href="{{ route('homePage') }}">Home</a>
+                  <a class="nav-link active {{ Request::is('/') ? 'text-decoration-underline text-primary' : ''}}" aria-current="page" href="{{ route('homePage') }}">Home</a>
               </li>
               <li class="nav-item dropdown pe-4">
-                  <a class="nav-link active dropdown-toggle {{ Request::is('category/*') ? 'text-primary' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                  <a class="nav-link active dropdown-toggle {{ Request::is('category/*') || Request::is('courseDetail/*') ? 'text-decoration-underline text-primary' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
                   <ul class="dropdown-menu">
                       @foreach ($categories as $category)
                           <li>
@@ -22,7 +22,7 @@
                   </ul>
               </li>
               <li class="nav-item pe-4">
-                  <a class="nav-link active {{ Request::is('writers') ? 'text-decoration-underline text-primary' : ''}}" aria-current="page" href="{{route('writers')}}">Writers</a>
+                  <a class="nav-link active {{ Request::is('writers') || Request::is('writerDetail/*') ? 'text-decoration-underline text-primary' : ''}}" aria-current="page" href="{{route('writers')}}">Writers</a>
               </li>
               <li class="nav-item pe-4">
                   <a class="nav-link active {{ Request::is('aboutUs') ? 'text-decoration-underline text-primary' : ''}}" aria-current="page" href="{{ route('aboutUs') }}">About Us</a>

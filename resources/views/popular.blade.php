@@ -1,4 +1,5 @@
 @extends('layout.main')
+@section('title', 'Popular Page')
 @section('content')
     <div class="container" style="min-height: 80vh">
         <h1 class="my-5">Popular</h1>

@@ -5,8 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [NavigationController::class, 'homePage'])->name('homePage');
 
-Route::get('/home', [NavigationController::class, 'homePage'])->name('homes');
-
 Route::get('/category/{category_name}', [NavigationController::class, 'categoryPage'])->name('categoryPage');
 
 Route::get('/aboutUs', [NavigationController::class, 'aboutUsPage'])->name('aboutUs');

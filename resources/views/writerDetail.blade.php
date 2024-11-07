@@ -1,7 +1,8 @@
 @extends('layout.main')
+@section('title', 'Writer Details')
 @section('content')
     <div style="min-height:80vh">  
-        <div class="d-flex gap-4 mt-5" style="padding-left: 15.5rem;">
+        <div class="d-flex gap-4 mt-5" style="padding-left: 14rem;">
             <img src="{{ asset($writer->image) }}" class="rounded-circle" alt="" style="width: 6%; height: 5rem">
             <div class="d-flex flex-column align-items-center justify-content-center">
                 <p class="fw-semibold">{{ $writer->name }}</p>
@@ -17,7 +18,7 @@
                 <div class="card-body w-100">
                     <h5 class="card-title fs-2">{{ $course->name }}</h5>
                     <p class="m-0">{{ $course->created_at->format('d M Y') }} | by: {{ $course->writer->name}}</p>
-                    <p class="card-text fs-5">{{ Str::limit($course->description, 150) }}</p>
+                    <p class="card-text mb-0 fs-5">{{ Str::limit($course->description, 200) }}</p>
                     <div class="d-flex justify-content-end">
                         <a href="{{ route('courseDetailPage', $course->id) }}" class="btn rounded rounded-5 bg-dark text-light w-25">read more...</a>
                     </div>

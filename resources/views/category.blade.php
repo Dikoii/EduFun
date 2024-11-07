@@ -1,4 +1,5 @@
 @extends('layout.main')
+@section('title', 'Category Detail Page')
 @section('content')
     <div class="container mt-5 mb-5">
         <h2 class="mt-5 mb-4">{{ $category_name }}</h2>

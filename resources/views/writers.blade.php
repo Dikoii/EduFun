@@ -1,4 +1,5 @@
 @extends('layout.main')
+@section('title', 'Writer Page')
 @section('content')
     <h2 class="ps-5 mt-5 text-start w-100">Our Writers:</h2>
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 83.2vh;">

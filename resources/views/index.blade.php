@@ -1,4 +1,5 @@
 @extends('layout.main')
+@section('title', 'Home Page')
 @section('content')
         <div class="">
             <img src="{{ asset('Asset/homeBG.jpg') }}" class="w-100 img-fluid" style="height: 50vh; object-fit:cover;" alt="">

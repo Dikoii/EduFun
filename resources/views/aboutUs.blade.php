@@ -1,4 +1,5 @@
 @extends('layout.main')
+@section('title', 'About Us Page')
 @section('content')
     <div class="d-flex flex-column text-center align-items-center gap-5" style="margin: 5rem 10rem">
         <h1 class="mt-5">About EduFun</h1>
