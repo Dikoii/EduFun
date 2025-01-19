@@ -4,6 +4,7 @@ use App\Http\Controllers\NavigationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [NavigationController::class, 'homePage'])->name('homePage');
+Route::post('/', [NavigationController::class, 'indexSearch'])->name('indexSearch');
 
 Route::get('/category/{category_name}', [NavigationController::class, 'categoryPage'])->name('categoryPage');
 

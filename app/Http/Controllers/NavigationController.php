@@ -16,15 +16,17 @@ class NavigationController extends Controller
         return view('index', compact('categories', 'courses'));
     }
 
+    public function indexSearch(Request $request){
+        $categories = Category::all();
+        $courses = Course::with('category', 'writer')->where('name', 'LIKE', "%".$request->inputSearch."%")->get();
+        return view('index', compact('categories', 'courses'));
+    }
+
     public function categoryPage($category_name){
         $categories = Category::all();
         $category = $categories->where('name', $category_name)->first();
-
-        if ($category) {
-            $courses = Course::with('category', 'writer')->where('category_id', $category->id)->get();
-        } else {
-            $courses = collect(); 
-        }
+        $category = $category->id;
+        $courses = Course::with('category', 'writer')->where('category_id', $category)->get();
 
         return view('category', compact('categories', 'courses', 'category_name'));
     }

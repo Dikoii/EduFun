@@ -17,18 +17,12 @@ class WriterSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for ($i = 1; $i <= 2; $i++) {
+        for($i = 1; $i<=3; $i++){
             Writer::create([
-                'category_id' => 1,
+                'category_id' => $i < 3 ? 1:2,
                 'name' => $faker->name(),
-                'image' => 'Asset/writer/writer-'. $i .'.jpg',
+                'image' => 'Asset/writer/writer-'.$i.'.jpg'
             ]);
         }
-        
-        Writer::create([
-            'category_id' => 2,
-            'name' => $faker->name(),
-            'image' => 'Asset/writer/writer-3.jpg',
-        ]);
     }
 }
